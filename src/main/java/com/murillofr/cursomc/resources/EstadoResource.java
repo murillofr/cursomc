@@ -12,23 +12,24 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.murillofr.cursomc.domain.Categoria;
-import com.murillofr.cursomc.services.CategoriaService;
+import com.murillofr.cursomc.domain.Estado;
+import com.murillofr.cursomc.services.EstadoService;
 
 @RestController
-@RequestMapping(value="/categorias")
-public class CategoriaResource {
+@RequestMapping(value="/estados")
+public class EstadoResource {
 	
 	@Autowired
-	private CategoriaService service;
+	private EstadoService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
-		Categoria obj = service.buscar(id);
+		Estado obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<?> inserir(@RequestBody Categoria obj) {
+	public ResponseEntity<?> inserir(@RequestBody Estado obj) {
 		
 		service.inserir(obj);
 		

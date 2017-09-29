@@ -3,26 +3,26 @@ package com.murillofr.cursomc.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.murillofr.cursomc.domain.Categoria;
-import com.murillofr.cursomc.repositories.CategoriaRepository;
+import com.murillofr.cursomc.domain.Estado;
+import com.murillofr.cursomc.repositories.EstadoRepository;
 import com.murillofr.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
-public class CategoriaService {
+public class EstadoService {
 	
 	@Autowired
-	private CategoriaRepository repo;
+	private EstadoRepository repo;
 	
-	public Categoria buscar(Integer id) {
-		Categoria obj = repo.findOne(id);
+	public Estado buscar(Integer id) {
+		Estado obj = repo.findOne(id);
 		if (obj == null) {
 			throw new ObjectNotFoundException("Objeto não encontrado! Id: " + id
-					+ ", Tipo: " + Categoria.class.getName());
+					+ ", Tipo: " + Estado.class.getName());
 		}
 		return obj;
 	}
 	
-	public void inserir(Categoria obj) {
+	public void inserir(Estado obj) {
 		obj.setId(null);
 		repo.save(obj);
 	}
