@@ -29,11 +29,9 @@ public class Pedido implements Serializable {
 	@JsonFormat(pattern="dd/MM/yyyy hh:mm")
 	private Date instante;
 	
-	@JsonManagedReference
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="pedido")
 	private Pagamento pagamento;
 	
-	@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
@@ -55,7 +53,15 @@ public class Pedido implements Serializable {
 		this.cliente = cliente;
 		this.enderecoDeEntrega = enderecoDeEntrega;
 	}
-
+	
+	public double getValorTotal() {
+		double soma = 0.0;
+		for(ItemPedido x : itens) {
+			soma += x.getSubTotal();
+		}
+		return soma;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
