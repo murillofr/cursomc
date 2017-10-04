@@ -28,9 +28,9 @@ public class CategoriaResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<?> inserir(@RequestBody Categoria obj) {
+	public ResponseEntity<Void> inserir(@RequestBody Categoria obj) {
 		
-		service.inserir(obj);
+		obj = service.inserir(obj);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
