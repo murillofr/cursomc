@@ -24,14 +24,14 @@ public class EstadoResource {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
-		Estado obj = service.buscar(id);
+		Estado obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<?> inserir(@RequestBody Estado obj) {
+	public ResponseEntity<?> insert(@RequestBody Estado obj) {
 		
-		service.inserir(obj);
+		service.insert(obj);
 		
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
