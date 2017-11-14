@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.murillofr.cursomc.domain.Categoria;
 import com.murillofr.cursomc.domain.Estado;
 import com.murillofr.cursomc.services.EstadoService;
 
